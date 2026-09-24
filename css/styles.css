@@ -1,0 +1,230 @@
+/*Variables y un poco para los estilos generales*/
+:root {
+    --primary-color: #1e3a8a;
+    --primari-light: #3b82f6;
+    --bg-section: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #d4d9df;
+    --shadow-soft: 0 10px 25px -5px rgba(30, 58, 138, 0.08), 0 8px 10px -6px rgba(30, 58, 138, 0.05);
+    --shadow-hover: 0 20px 35px -10px rgba(30, 58, 138, 0.15), 0 12px 15px -8px rgba(30, 58, 138, 0.1);
+    --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0 ;
+    padding: 0 ;
+}
+
+body{
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: var(--text-main);
+    background-color: #ffffff;
+    line-height: 1.6;
+}
+
+/*Para la seccion de servicios*/
+.servicios-section{
+    background-color: var(--bg-section);
+    padding: 5rem 1.5rem;
+    animation: fadeInSection 0.8s ease-out forwards;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*Cabecera de la seccion de servicios*/
+
+.seccion-header{
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3.5rem auto;
+}
+
+.seccion-header h2{
+    font-size: 2.25rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.5px;
+}
+
+.section-header p{
+    font-size: 1.1rem;
+    color:var(--text-muted)
+}
+
+/*Grid de servicios*/
+.servicio-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap:2rem;
+}
+
+/*Tarjetas individuales que serian los articles que separan a los 3 servicios*/
+.servicio-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+
+.servicio-card::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg,var(--primary-color),var(--primari-light));
+    opacity: 0;
+    transition: var(--transition-smooth);
+    z-index:2;
+}
+
+.servicio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: transparent;
+}
+
+.servicio-card:hover::before {
+    opacity: 1;
+}
+/*Contenedor de la imagen*/
+imagen-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background-color: #e2e8f0; /* Fondo de respaldo si la imagen tarda en cargar */
+}
+
+.imagen-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    transition: transform 0.5s ease;
+}
+
+/* Efecto de zoom sutil en la imagen al hacer hover sobre la tarjeta */
+.servicio-card:hover .imagen-container img {
+    transform: scale(1.08);
+}
+
+/* Contenido interno de la tarjeta */
+.card-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+/* Títulos y Descripciones */
+.card-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+}
+
+.card-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.75rem;
+    flex-grow: 1;
+}
+
+/* Sección de Tarifas */
+.tarifa-container {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.2rem;
+}
+
+.moneda {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.precio {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    letter-spacing: -1px;
+}
+
+.periodo {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-left: 0.3rem;
+}
+
+/* Botón de Acción */
+.btn-servicio {
+    display: block;
+    text-align: center;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+.servicio-card:hover .btn-servicio {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* --- Animación de Entrada --- */
+@keyframes fadeInSection {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Responsividad (Breakpoints) --- */
+
+/* Pantallas Medianas (≥ 768px): Dos columnas */
+@media (min-width: 768px) {
+    .servicios-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Pantallas Grandes (≥ 1024px): Tres columnas */
+@media (min-width: 1024px) {
+    .servicios-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+
+
+
+
+
+
