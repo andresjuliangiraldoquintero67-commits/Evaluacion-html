@@ -1,12 +1,11 @@
-/*Variables y un poco para los estilos generales*/
 :root {
     --primary-color: #1e3a8a;
-    --primari-light: #3b82f6;
+    --primary-light: #3b82f6;
     --bg-section: #f8fafc;
     --card-bg: #ffffff;
     --text-main: #1e293b;
     --text-muted: #64748b;
-    --border-color: #d4d9df;
+    --border-color: #e2e8f0;
     --shadow-soft: 0 10px 25px -5px rgba(30, 58, 138, 0.08), 0 8px 10px -6px rgba(30, 58, 138, 0.05);
     --shadow-hover: 0 20px 35px -10px rgba(30, 58, 138, 0.15), 0 12px 15px -8px rgba(30, 58, 138, 0.1);
     --transition-smooth: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
@@ -14,38 +13,35 @@
 
 * {
     box-sizing: border-box;
-    margin: 0 ;
-    padding: 0 ;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     color: var(--text-main);
     background-color: #ffffff;
     line-height: 1.6;
 }
 
-/*Para la seccion de servicios*/
-.servicios-section{
+.servicios-section {
     background-color: var(--bg-section);
     padding: 5rem 1.5rem;
     animation: fadeInSection 0.8s ease-out forwards;
 }
 
-.container{
+.container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/*Cabecera de la seccion de servicios*/
-
-.seccion-header{
+.section-header {
     text-align: center;
     max-width: 700px;
     margin: 0 auto 3.5rem auto;
 }
 
-.seccion-header h2{
+.section-header h2 {
     font-size: 2.25rem;
     color: var(--primary-color);
     font-weight: 700;
@@ -53,19 +49,17 @@ body{
     letter-spacing: -0.5px;
 }
 
-.section-header p{
+.section-header p {
     font-size: 1.1rem;
-    color:var(--text-muted)
+    color: var(--text-muted);
 }
 
-/*Grid de servicios*/
-.servicio-grid{
+.servicios-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap:2rem;
+    gap: 2rem;
 }
 
-/*Tarjetas individuales que serian los articles que separan a los 3 servicios*/
 .servicio-card {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -78,18 +72,17 @@ body{
     position: relative;
 }
 
-
-.servicio-card::before{
+.servicio-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 4px;
-    background: linear-gradient(90deg,var(--primary-color),var(--primari-light));
+    background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
     opacity: 0;
     transition: var(--transition-smooth);
-    z-index:2;
+    z-index: 2;
 }
 
 .servicio-card:hover {
@@ -101,28 +94,26 @@ body{
 .servicio-card:hover::before {
     opacity: 1;
 }
-/*Contenedor de la imagen*/
-imagen-container {
+
+.imagen-container {
     width: 100%;
     height: 200px;
     overflow: hidden;
     position: relative;
-    background-color: #e2e8f0; /* Fondo de respaldo si la imagen tarda en cargar */
+    background-color: #e2e8f0;
 }
 
 .imagen-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     transition: transform 0.5s ease;
 }
 
-/* Efecto de zoom sutil en la imagen al hacer hover sobre la tarjeta */
 .servicio-card:hover .imagen-container img {
     transform: scale(1.08);
 }
 
-/* Contenido interno de la tarjeta */
 .card-content {
     padding: 2rem;
     display: flex;
@@ -131,7 +122,6 @@ imagen-container {
     justify-content: space-between;
 }
 
-/* Títulos y Descripciones */
 .card-content h3 {
     font-size: 1.25rem;
     font-weight: 600;
@@ -146,7 +136,6 @@ imagen-container {
     flex-grow: 1;
 }
 
-/* Sección de Tarifas */
 .tarifa-container {
     margin-bottom: 1.5rem;
     display: flex;
@@ -173,7 +162,6 @@ imagen-container {
     margin-left: 0.3rem;
 }
 
-/* Botón de Acción */
 .btn-servicio {
     display: block;
     text-align: center;
@@ -193,7 +181,6 @@ imagen-container {
     color: #ffffff;
 }
 
-/* --- Animación de Entrada --- */
 @keyframes fadeInSection {
     from {
         opacity: 0;
@@ -205,26 +192,14 @@ imagen-container {
     }
 }
 
-/* --- Responsividad (Breakpoints) --- */
-
-/* Pantallas Medianas (≥ 768px): Dos columnas */
 @media (min-width: 768px) {
     .servicios-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Pantallas Grandes (≥ 1024px): Tres columnas */
 @media (min-width: 1024px) {
     .servicios-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
-
-
-
-
-
-
-
-
